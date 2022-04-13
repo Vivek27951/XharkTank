@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { Pitch, Offer } = require("../models/pitch");
+const Pitch = require("../models/pitch");
+const Offer = require("../models/offer");
 
 //get all pitch
 router.get("/pitches", async (req, res) => {
@@ -48,13 +49,10 @@ router.post("/pitches/:id/makeOffer", getPitch, async (req, res) => {
     comment: req.body.comment,
   });
   try {
-    const newOffer = await offer.save();
-    findPitch.offers.push(newOffer);
+    findPitch.offers.push(offer);
+    await offer.save();
     await findPitch.save();
-    // res.status(201).json(findPitch);
-    // const newPitch = await pitch.save();
-    res.status(201).json(newPitch);
-    // res.status(201).json({ message: offer });
+    res.status(201).json(findPitch);
   } catch (err) {
     res.status(400).json({ message: "Invalid Request Body!" });
   }
