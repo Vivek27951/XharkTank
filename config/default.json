@@ -1,0 +1,9 @@
+{
+    "Vivek": {
+      "dbConfig": {
+        "host": "localhost",
+        "port": 5984,
+        "dbName": "mongodb+srv://Api:IiRC1cAKrbpLB9ln@testapi.mkhrp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+      }
+    }
+  }
