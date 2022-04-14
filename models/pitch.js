@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const pitchSchema = new mongoose.Schema({
   _id: {
-    type: Number,
+    type: String,
     required: true,
   },
   entrepreneur: {
@@ -28,7 +28,7 @@ const pitchSchema = new mongoose.Schema({
   offers: [
     {
       _id: {
-        type: Number,
+        type: String,
         required: true,
       },
       investor: {
