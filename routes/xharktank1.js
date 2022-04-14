@@ -51,9 +51,10 @@ router.post("/pitches", async (req, res) => {
 //post offer for a pitch
 router.post("/pitches/:id/makeOffer", getPitch, async (req, res) => {
   const findPitch = res.pitch;
-  console.log("offer length", findPitch.offers.length);
+
+  console.log("offer length", findPitch);
   const offer = new Offer({
-    _id: findPitch.offers.length,
+    _id: findPitch.offers.length + 1,
     investor: req.body.investor,
     amount: req.body.amount,
     equity: req.body.equity,
@@ -61,7 +62,6 @@ router.post("/pitches/:id/makeOffer", getPitch, async (req, res) => {
   });
   try {
     findPitch.offers.push(offer);
-    await offer.save();
     await findPitch.save();
     res.status(201).json(findPitch);
   } catch (err) {

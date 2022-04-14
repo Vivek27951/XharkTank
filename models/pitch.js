@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
-// const Offer = require("./offer");
 
 const pitchSchema = new mongoose.Schema({
+  _id: {
+    type: Number,
+    required: true,
+  },
   entrepreneur: {
     type: String,
     required: true,
@@ -24,8 +27,26 @@ const pitchSchema = new mongoose.Schema({
   },
   offers: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Offer",
+      _id: {
+        type: Number,
+        required: true,
+      },
+      investor: {
+        type: String,
+        required: true,
+      },
+      amount: {
+        type: Number,
+        required: true,
+      },
+      equity: {
+        type: Number,
+        required: true,
+      },
+      comment: {
+        type: String,
+        required: true,
+      },
     },
   ],
 });
